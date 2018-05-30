@@ -21,3 +21,4 @@ For more information about D3D12, see the articles from Microsoft.
 
 # Demo Video
 <a href>https://www.youtube.com/watch?v=nhJ73cNZFL0</a>
+In this video, app renders 10000 shadows.
