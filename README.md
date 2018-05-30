@@ -10,7 +10,7 @@ Your PC also needs to support D3D12 (with Win 10 and compatible hardware) for ru
 # Feature
 A simple project that demonstrates how to render with D3D12.
 <br>
-Rendering shadow maps completely on another thread for reducing main thread overhead.
+Rendering shadow maps completely on another thread for reducing main thread overhead. (No cascades, only one map.)
 <br>
 Bundles and indirect drawing are also implemented.
 <br>
