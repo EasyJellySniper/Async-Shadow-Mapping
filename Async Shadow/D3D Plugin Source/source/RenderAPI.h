@@ -27,7 +27,7 @@ public:
 	virtual void SetTextureData(void* _texture) = 0;
 	virtual bool SetShadowTextureData(void* _shadowTexture) = 0;
 	virtual void WorkerThread() = 0;
-	virtual void NotifyShadowThread(bool _multithread) = 0;
+	virtual void NotifyShadowThread(bool _multithread, float _fakeDelay) = 0;
 	virtual void InternalUpdate() = 0;
 	virtual bool RenderShadows() = 0;
 	virtual void SetObjectMatrix(int _index, XMMATRIX _matrix) = 0;

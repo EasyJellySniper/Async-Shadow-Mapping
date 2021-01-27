@@ -21,7 +21,7 @@ public class AsyncShadow : MonoBehaviour
     [DllImport("AsyncShadow")]
     static extern bool SendShadowTextureData(System.IntPtr _shadowTexture);
     [DllImport("AsyncShadow")]
-    static extern void RenderShadows(bool _multiThread);
+    static extern void RenderShadows(bool _multiThread, float _fakeDelayTime);
     [DllImport("AsyncShadow")]
     static extern void SetObjectTransform(int _index, float[] _pos, float[] _scale, float[] _rot);
     [DllImport("AsyncShadow")]
@@ -41,6 +41,7 @@ public class AsyncShadow : MonoBehaviour
     public Material cutoutMaterial;
     public int numberToGenerate;
     public float rangeToGenerate;
+    public float fakeDelayTime = 0f;
 
     [Header("Light Settings")]
     public bool multiThread = true;
@@ -200,7 +201,7 @@ public class AsyncShadow : MonoBehaviour
     {
         SetRenderMethod(indirectDrawing, bundleDrawing);
         UpdateLightTransform();
-        RenderShadows(multiThread);
+        RenderShadows(multiThread, fakeDelayTime);
     }
 
     bool Init()

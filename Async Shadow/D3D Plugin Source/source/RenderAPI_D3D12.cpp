@@ -27,7 +27,7 @@ public:
 	virtual void SetTextureData(void* _texture);
 	virtual bool SetShadowTextureData(void* _shadowTexture);
 	virtual void WorkerThread();
-	virtual void NotifyShadowThread(bool _multithread);
+	virtual void NotifyShadowThread(bool _multithread, float _fakeDelay);
 	virtual void InternalUpdate();
 	virtual bool RenderShadows();
 	virtual void SetObjectMatrix(int _index, XMMATRIX _matrix);
@@ -64,6 +64,7 @@ private:
 	// drawing flag
 	bool useIndirect;
 	bool useBundle;
+	float delayTime;
 };
 
 RenderAPI* CreateRenderAPI_D3D12()
@@ -356,12 +357,14 @@ void RenderAPI_D3D12::WorkerThread()
 	while (true)
 	{
 		WaitForSingleObject(beginShadowThread, INFINITE);
+		Sleep(delayTime);
 		ExecuteAndTiming();
 	}
 }
 
-void RenderAPI_D3D12::NotifyShadowThread(bool _multithread)
+void RenderAPI_D3D12::NotifyShadowThread(bool _multithread,  float _fakeDelay)
 {
+	delayTime = _fakeDelay;
 	if (_multithread)
 	{
 		SetEvent(beginShadowThread);

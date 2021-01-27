@@ -63,9 +63,9 @@ extern "C" bool UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API SendShadowTextureData
 }
 
 // render shadows
-extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API RenderShadows(bool _multithread)
+extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API RenderShadows(bool _multithread, float _fakeDelay)
 {
-	s_CurrentAPI->NotifyShadowThread(_multithread);
+	s_CurrentAPI->NotifyShadowThread(_multithread, _fakeDelay);
 }
 
 // set matrix
